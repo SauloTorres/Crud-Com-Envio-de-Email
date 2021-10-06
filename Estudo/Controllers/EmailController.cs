@@ -21,6 +21,12 @@ namespace Estudo.Controllers
         // GET: Email
         public ActionResult Index()
         {
+            
+                ViewBag.MsgSucess = TempData["msg_sucess"] as string;
+           
+                ViewBag.MsgError = TempData["msg_error"] as string;
+            
+            
             return View();
         }
 
@@ -108,13 +114,15 @@ namespace Estudo.Controllers
 
                 _smtpClient.EnableSsl = true;
                 _smtpClient.Send(_mailMessage);
+                TempData["msg_sucess"] = "Email enviado com sucesso";
 
-                return true;
-
+                return true;              
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                TempData["msg_error"] = "Um erro ocorreu, por favor contate o suporte";
+                //throw ex;
+                return false;
             }
         }
     }

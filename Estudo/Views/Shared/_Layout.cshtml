@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="~/Content/plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="~/Content/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="~/Content/plugins/toastr/toastr.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -48,20 +49,20 @@
         <!-- /.navbar -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/Home/Index" class="brand-link">
-                <img src="~/Content/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">AdminLTE 3</span>
+            <a href="/Home/Index" class="brand-link mb-4">
+                <img alt="Logo" class="brand-image ml-0">
+                <span class="brand-text font-weight-light" style="color : darkslategrey"> .</span>
             </a>
 
             <!-- Sidebar -->
-            <div class="sidebar">           
-            <!-- Sidebar Menu -->
+            <div class="sidebar">
+                <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
-                            
+
                         <li class="nav-item">
                             <a href="/Email/Index" class="nav-link">
                                 <i class="far fa-envelope"></i>
@@ -69,7 +70,7 @@
                                     Enviar E-mail
                                 </p>
                             </a>
-                        <li/>
+                        <li />
                         <li class="nav-item">
                             <a href="/Pessoas/Index" class="nav-link">
                                 <i class="fas fa-user-cog"></i>
@@ -78,7 +79,7 @@
                                 </p>
                             </a>
 
-                        </li>                       
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -86,6 +87,11 @@
             <!-- /.sidebar -->
         </aside>
         <div class="container body-content">
+            <div class="toast toast-success" aria-live="polite" style="">
+                <div class="toast-message">
+                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+                </div>
+            </div>
             @RenderBody()
             <hr />
         </div>
@@ -125,5 +131,27 @@
     <script src="~/Content/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="~/Content/dist/js/pages/dashboard.js"></script>
+    <script src="~/Content/plugins/toastr/toastr.min.js"></script>
+    <script>
+    $(function () {
+        var Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 5000
+        });
+
+        var msg_sucess = "@((string)ViewBag.MsgSucess)";
+        var msg_error = "@((string)ViewBag.MsgError)";
+
+        if (msg_sucess !== null && msg_sucess !== '') {
+            toastr.success(msg_sucess)
+        } else if (msg_error !== null && msg_error !== '') {
+            toastr.error(msg_error)
+        }
+
+        });
+    </script>
+   
 </body>
 </html>

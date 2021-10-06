@@ -17,7 +17,7 @@ namespace Estudo
         // GET: Pessoas
         public ActionResult Index()
         {
-            return View(db.Pessoas.ToList());
+            return View(db.Pessoas.Where(x => x.Ativo == true).ToList());
         }
 
         // GET: Pessoas/Details/5
@@ -110,7 +110,8 @@ namespace Estudo
         public ActionResult DeleteConfirmed(int id)
         {
             Pessoa pessoa = db.Pessoas.Find(id);
-            db.Pessoas.Remove(pessoa);
+            pessoa.Ativo = false;
+            db.Entry(pessoa).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

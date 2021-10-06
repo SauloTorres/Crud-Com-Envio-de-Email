@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@using (Html.BeginForm("EnviaEmail", "Home", FormMethod.Post,
+@using (Html.BeginForm("EnviaEmail", "Email", FormMethod.Post,
                                       new { enctype = "multipart/form-data" }))
 {
 
@@ -30,6 +30,7 @@
         <div class="row">
             <div>
                 @Html.Label("Grupo de Email")
+
             </div>
             <div class="input-group">
                 @Html.DropDownList("grupoEmail", new SelectList(listItems, "Value", "Text"), "-- Grupo --", new { @class = "form-control" })
@@ -40,12 +41,14 @@
                 @Html.Label("Corpo do Email")
             </div>
             <div class="input-group">
-                <input type="file" class="form-control-file" id="file" name="file">
+                <input type="file" class="form-control-file" id="file" name="file" required>
             </div>
         </div>
 
         <div style="margin-top: 25px">
             <button class="btn btn-success">Enviar</button>
         </div>
+
     </div>
 }
+<script src="~/Content/plugins/jquery-validation/jquery.validate.js"></script>

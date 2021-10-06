@@ -131,6 +131,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110051623399_InitialCreate.cs" />
+    <Compile Include="Migrations\202110051623399_InitialCreate.Designer.cs">
+      <DependentUpon>202110051623399_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110061209269_Ativo.cs" />
+    <Compile Include="Migrations\202110061209269_Ativo.Designer.cs">
+      <DependentUpon>202110061209269_Ativo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DBContext.cs" />
     <Compile Include="Models\Destinatario.cs" />
     <Compile Include="Models\Pessoa.cs" />
@@ -2498,6 +2507,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202110051623399_InitialCreate.resx">
+      <DependentUpon>202110051623399_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110061209269_Ativo.resx">
+      <DependentUpon>202110061209269_Ativo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
